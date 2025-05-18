@@ -1,7 +1,7 @@
 {
-    "name": "Creatr Base",
-    "short_name": "Creatr",
-    "description": "Creatr - Your Creative Platform",
+    "name": "Calculadora de Folha de Pagamento",
+    "short_name": "Calculadora de Folha",
+    "description": "Calculadora de Folha de Pagamento",
     "icons": [{
             "src": "/android-chrome-192x192.png",
             "sizes": "192x192",
