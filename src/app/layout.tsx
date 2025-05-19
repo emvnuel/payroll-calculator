@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     default: "salario.ninja | Calculadora de Folha de Pagamento",
     template: "%s | salario.ninja",
   },
-  description: "Calcule o salário líquido, descontos de INSS e IRRF para funcionários. Simulador completo de folha de pagamento com valores atualizados para 2024.",
+  description: "Calcule o salário líquido, descontos de INSS e IRRF para funcionários. Simulador completo de folha de pagamento com valores atualizados para 2025.",
   applicationName: "salario.ninja",
   keywords: ["folha de pagamento", "salário", "cálculo", "rh", "recursos humanos", "INSS", "IRRF", "imposto de renda", "desconto", "simulador", "calculadora"],
   authors: [{ name: "Equipe Payroll" }],

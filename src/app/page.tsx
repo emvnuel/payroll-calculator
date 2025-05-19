@@ -74,29 +74,29 @@ export default function HomePage() {
                     </thead>
                     <tbody className="divide-y divide-border">
                       <tr>
-                        <td className="p-2">Até R$ 2.112,00</td>
+                        <td className="p-2">Até R$ 2.259,20</td>
                         <td className="p-2">Isento</td>
                         <td className="p-2">R$ 0,00</td>
                       </tr>
                       <tr>
-                        <td className="p-2">De R$ 2.112,01 até R$ 2.826,65</td>
+                        <td className="p-2">De R$ 2.259,21 até R$ 2.826,65</td>
                         <td className="p-2">7,5%</td>
-                        <td className="p-2">R$ 158,40</td>
+                        <td className="p-2">R$ 169,44</td>
                       </tr>
                       <tr>
                         <td className="p-2">De R$ 2.826,66 até R$ 3.751,05</td>
                         <td className="p-2">15%</td>
-                        <td className="p-2">R$ 370,40</td>
+                        <td className="p-2">R$ 381,44</td>
                       </tr>
                       <tr>
                         <td className="p-2">De R$ 3.751,06 até R$ 4.664,68</td>
                         <td className="p-2">22,5%</td>
-                        <td className="p-2">R$ 651,73</td>
+                        <td className="p-2">R$ 662,77</td>
                       </tr>
                       <tr>
                         <td className="p-2">Acima de R$ 4.664,68</td>
                         <td className="p-2">27,5%</td>
-                        <td className="p-2">R$ 884,96</td>
+                        <td className="p-2">R$ 896,00</td>
                       </tr>
                     </tbody>
                   </table>
@@ -171,7 +171,7 @@ export default function HomePage() {
                 <section className="bg-background p-5 rounded-lg border border-border h-full">
                   <h3 className="text-lg font-semibold mb-3 text-primary flex items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2 text-chart-4"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect><line x1="8" x2="16" y1="12" y2="12"></line><line x1="12" x2="12" y1="8" y2="16"></line></svg>
-                    Tabela Progressiva do INSS (2024)
+                    Tabela Progressiva do INSS (2025)
                   </h3>
                   <p className="text-sm text-muted-foreground mb-3">Confira as alíquotas e faixas salariais atualizadas:</p>
                   <div className="overflow-x-auto">
@@ -184,26 +184,26 @@ export default function HomePage() {
                       </thead>
                       <tbody className="divide-y divide-border">
                         <tr>
-                          <td className="p-2">Até R$ 1.412,00</td>
+                          <td className="p-2">Até R$ 1.518,00</td>
                           <td className="p-2">7,5%</td>
                         </tr>
                         <tr>
-                          <td className="p-2">De R$ 1.412,01 até R$ 2.666,68</td>
+                          <td className="p-2">De R$ 1.518,01 até R$ 2.793,88</td>
                           <td className="p-2">9%</td>
                         </tr>
                         <tr>
-                          <td className="p-2">De R$ 2.666,69 até R$ 4.000,03</td>
+                          <td className="p-2">De R$ 2.793,89 até R$ 4.190,83</td>
                           <td className="p-2">12%</td>
                         </tr>
                         <tr>
-                          <td className="p-2">De R$ 4.000,04 até R$ 7.786,02</td>
+                          <td className="p-2">De R$ 4.190,84 até R$ 8.157,41</td>
                           <td className="p-2">14%</td>
                         </tr>
                       </tbody>
                     </table>
                   </div>
                   <p className="mt-3 text-xs text-muted-foreground">
-                    * O valor máximo de contribuição é limitado ao teto do INSS (R$ 7.786,02).
+                    * O valor máximo de contribuição é limitado ao teto do INSS (R$ 8.157,41).
                   </p>
                 </section>
                 
@@ -220,10 +220,10 @@ export default function HomePage() {
                     <div className="p-3 bg-muted rounded-md">
                       <p className="font-medium text-xs mb-1 text-muted-foreground">Exemplo para salário de R$ 3.000,00:</p>
                       <ul className="text-sm space-y-1.5">
-                        <li><span className="font-medium">Faixa 1:</span> 7,5% de R$ 1.412,00 = <span className="text-chart-1">R$ 105,90</span></li>
-                        <li><span className="font-medium">Faixa 2:</span> 9% de R$ 1.254,68 = <span className="text-chart-1">R$ 112,92</span></li>
-                        <li><span className="font-medium">Faixa 3:</span> 12% de R$ 333,32 = <span className="text-chart-1">R$ 40,00</span></li>
-                        <li className="pt-1 border-t border-border"><span className="font-medium">Total INSS:</span> <span className="text-chart-1">R$ 258,82</span> (8,63% do salário)</li>
+                        <li><span className="font-medium">Faixa 1:</span> 7,5% de R$ 1.518,00 = <span className="text-chart-1">R$ 113,85</span></li>
+                        <li><span className="font-medium">Faixa 2:</span> 9% de R$ 1.275,88 = <span className="text-chart-1">R$ 114,83</span></li>
+                        <li><span className="font-medium">Faixa 3:</span> 12% de R$ 206,12 = <span className="text-chart-1">R$ 24,73</span></li>
+                        <li className="pt-1 border-t border-border"><span className="font-medium">Total INSS:</span> <span className="text-chart-1">R$ 253,41</span> (8,45% do salário)</li>
                       </ul>
                     </div>
                     
@@ -266,7 +266,7 @@ export default function HomePage() {
                       Limite do Teto
                     </h4>
                     <p className="text-sm text-muted-foreground">
-                      Para salários acima do teto do INSS (R$ 7.786,02), o desconto máximo é limitado a aproximadamente R$ 925,19 (valor de 2024).
+                      Para salários acima do teto do INSS (R$ 8.157,41), o desconto máximo é limitado a aproximadamente R$ 951,62 (valor de 2025).
                     </p>
                   </div>
                   
@@ -287,7 +287,7 @@ export default function HomePage() {
       </main>
       
       <footer className="w-full max-w-3xl mt-12 pt-6 border-t border-border text-center text-muted-foreground">
-        <p>© 2025 <span className="font-medium">salario.ninja</span> - Sua ferramenta profissional de cálculo salarial</p>
+        <p>© 2026 <span className="font-medium">salario.ninja</span> - Sua ferramenta profissional de cálculo salarial</p>
       </footer>
       <JsonLd />
     </div>
