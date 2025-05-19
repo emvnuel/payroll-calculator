@@ -243,32 +243,30 @@ export default function SalaryCharts({
           className="h-[350px] flex items-center justify-center"
         >
           {activeChart === 'breakdown' && (
-            <div className="w-full max-w-[220px] mx-auto">
-              <Pie data={breakdownData} options={breakdownOptions} width={200} height={200} />
-              <div className="mt-6 w-full flex justify-center">
-                <div className="flex min-w-[340px] min-h-[100px]">
-                <div className="flex-1 flex flex-col items-center justify-center text-center">
+            <div className="w-full max-w-md mx-auto">
+              <Pie data={breakdownData} options={breakdownOptions} />
+              <div className="mt-6 grid grid-cols-2 gap-4 text-center">
+                <div>
                   <p className="text-sm text-muted-foreground">Salário Líquido</p>
                   <p className="text-lg font-medium text-chart-2">{formatCurrency(netPay)}</p>
                   <p className="text-xs text-muted-foreground">
                     {((netPay / grossPay) * 100).toFixed(1)}% do salário bruto
                   </p>
                 </div>
-                <div className="flex-1 flex flex-col items-center justify-center text-center">
+                <div>
                   <p className="text-sm text-muted-foreground">Total de Descontos</p>
                   <p className="text-lg font-medium text-chart-1">{formatCurrency(totalDiscount)}</p>
                   <p className="text-xs text-muted-foreground">
                     {((totalDiscount / grossPay) * 100).toFixed(1)}% do salário bruto
                   </p>
                 </div>
-                </div>
               </div>
             </div>
           )}
 
           {activeChart === 'detailed' && (
-            <div className="w-full max-w-[220px] mx-auto">
-              <Pie data={detailedData} options={breakdownOptions} width={200} height={200} />
+            <div className="w-full max-w-md mx-auto">
+              <Pie data={detailedData} options={breakdownOptions} />
               <div className="mt-6 grid grid-cols-1 gap-2">
                 {discounts.map((discount, index) => (
                   <div key={index} className="flex justify-between items-center text-sm">
@@ -297,8 +295,8 @@ export default function SalaryCharts({
           )}
 
           {activeChart === 'comparison' && (
-            <div className="w-full max-w-[220px] mx-auto">
-              <Bar data={comparisonData} options={comparisonOptions} width={200} height={200} />
+            <div className="w-full h-full">
+              <Bar data={comparisonData} options={comparisonOptions} />
               <div className="mt-4 text-center">
                 <p className="text-sm text-muted-foreground">
                   Seu salário bruto de {formatCurrency(grossPay)} comparado com médias do mercado

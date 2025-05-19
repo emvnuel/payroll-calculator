@@ -3,7 +3,9 @@ import React from "react";
 
 import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
+import { ThemeProvider } from "@/components/theme-provider";
 
+import { DevtoolsProvider } from 'creatr-devtools'
 export const viewport = {
   width: "device-width",
   initialScale: 1,
@@ -82,12 +84,14 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="pt-BR" className={GeistSans.variable}>
+    <html lang="pt-BR" className={`${GeistSans.variable}`}>
       <head>
         <link rel="canonical" href="https://salario.ninja/" />
       </head>
-      <body className="light">
-          {children}
+      <body>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+          <DevtoolsProvider>{children}</DevtoolsProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

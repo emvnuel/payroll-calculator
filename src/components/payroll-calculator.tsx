@@ -146,7 +146,7 @@ export default function PayrollCalculator() {
 
     try {
       // Construct URL with query parameters
-      const url = new URL('https://payroll.awesomeapps.cloud/payroll', window.location.origin);
+      const url = new URL('/payroll', window.location.origin);
       url.searchParams.append('grossPay', formData.grossPay.toString());
       url.searchParams.append('numberOfDependents', formData.numberOfDependents.toString());
       url.searchParams.append('fixedAmountDiscount', formData.fixedAmountDiscount.toString());

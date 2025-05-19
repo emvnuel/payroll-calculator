@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://salario.ninja/sitemap.xml
+Sitemap: https://calculadora-folha-pagamento.com.br/sitemap.xml
