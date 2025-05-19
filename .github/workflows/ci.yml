@@ -1,0 +1,59 @@
+name: CI - Build and Push Docker Image
+
+on:
+  push:
+    branches:
+      - main # Or your default branch
+
+jobs:
+  build-and-push-image:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # Specify your Node.js version
+          cache: 'pnpm' # Or 'npm'/'yarn' if you use those
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 8 # Specify your pnpm version or remove for latest
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build Next.js app
+        run: pnpm build
+
+      - name: Read package.json
+        id: package_json
+        uses: jaywcjlove/github-action-read-file@main
+        with:
+          path: package.json
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }} # Or your GitHub username if deploying to personal registry
+          password: ${{ secrets.GH_PAT }} # Personal Access Token with write:packages scope
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile.prod
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository_owner }}/${{fromJson(steps.package_json.outputs.content).name}}:${{fromJson(steps.package_json.outputs.content).version}}
+            ghcr.io/${{ github.repository_owner }}/${{fromJson(steps.package_json.outputs.content).name}}:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
