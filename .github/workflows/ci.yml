@@ -16,16 +16,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 8 # Specify your pnpm version or remove for latest
+
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20' # Specify your Node.js version
           cache: 'pnpm' # Or 'npm'/'yarn' if you use those
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 8 # Specify your pnpm version or remove for latest
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
