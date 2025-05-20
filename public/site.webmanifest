@@ -1,7 +1,7 @@
 {
-    "name": "Creatr Base",
-    "short_name": "Creatr",
-    "description": "Creatr - Your Creative Platform",
+    "name": "salario.ninja | Calculadora de Folha de Pagamento",
+    "short_name": "salario.ninja",
+    "description": "Calcule o salário líquido, descontos de INSS e IRRF para funcionários. Simulador completo de folha de pagamento com valores atualizados para 2025.",
     "icons": [{
             "src": "/android-chrome-192x192.png",
             "sizes": "192x192",
@@ -16,8 +16,8 @@
         }
     ],
     "start_url": "/",
-    "theme_color": "#ffffff",
-    "background_color": "#ffffff",
+    "theme_color": "#F4F4F5",
+    "background_color": "#F4F4F5",
     "display": "standalone",
     "orientation": "portrait",
     "scope": "/",
