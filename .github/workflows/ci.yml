@@ -22,12 +22,11 @@ jobs:
         with:
           path: package.json
 
-      - name: Log in to GitHub Container Registry
+      - name: Log in to Docker Hub
         uses: docker/login-action@v3
         with:
-          registry: ghcr.io
-          username: ${{ github.repository_owner }} # Or your GitHub username if deploying to personal registry
-          password: ${{ secrets.GH_PAT }} # Personal Access Token with write:packages scope
+          username: myawesomeapps
+          password: ${{ secrets.DOCKERHUB_TOKEN }} # Docker Hub access token
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
@@ -36,7 +35,7 @@ jobs:
           file: ./Dockerfile.prod
           push: true
           tags: |
-            ghcr.io/${{ github.repository_owner }}/${{fromJson(steps.package_json.outputs.content).name}}:${{fromJson(steps.package_json.outputs.content).version}}
-            ghcr.io/${{ github.repository_owner }}/${{fromJson(steps.package_json.outputs.content).name}}:latest
+            myawesomeapps/${{fromJson(steps.package_json.outputs.content).name}}:${{fromJson(steps.package_json.outputs.content).version}}
+            myawesomeapps/${{fromJson(steps.package_json.outputs.content).name}}:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
