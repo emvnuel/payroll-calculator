@@ -44,3 +44,21 @@ jobs:
           tags: |
             myawesomeapps/${{fromJson(steps.package_json.outputs.content).name}}:${{fromJson(steps.package_json.outputs.content).version}}
             myawesomeapps/${{fromJson(steps.package_json.outputs.content).name}}:latest
+
+      - name: Update deployment file
+        run: |
+          # Setup Git
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          
+          # Clone the deployments repository
+          git clone https://x-access-token:${{ secrets.DEPLOYMENTS_REPO_TOKEN }}@github.com/emvnuel/deployments.git
+          cd deployments
+          
+          # Update the image tag in the deployment file
+          sed -i "s|image: myawesomeapps/${{fromJson(steps.package_json.outputs.content).name}}:.*|image: myawesomeapps/${{fromJson(steps.package_json.outputs.content).name}}:${{fromJson(steps.package_json.outputs.content).version}}|g" payroll-front/landing-deployment.yaml
+          
+          # Commit and push changes
+          git add payroll-front/landing-deployment.yaml
+          git commit -m "Update ${{fromJson(steps.package_json.outputs.content).name}} image to version ${{fromJson(steps.package_json.outputs.content).version}} (ci)"
+          git push
