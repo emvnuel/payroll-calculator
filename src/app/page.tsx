@@ -287,7 +287,7 @@ export default function HomePage() {
       </main>
       
       <footer className="w-full max-w-3xl mt-12 pt-6 border-t border-border text-center text-muted-foreground">
-        <p>© 2026 <span className="font-medium">salario.ninja</span> - Sua ferramenta profissional de cálculo salarial</p>
+        <p>© 2025 <span className="font-medium">salario.ninja</span> - Sua ferramenta profissional de cálculo salarial</p>
       </footer>
       <JsonLd />
     </div>

@@ -240,11 +240,13 @@ export default function SalaryCharts({
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
-          className="h-[350px] flex items-center justify-center"
+          className="h-[450px] flex items-center justify-center"
         >
           {activeChart === 'breakdown' && (
             <div className="w-full max-w-md mx-auto">
-              <Pie data={breakdownData} options={breakdownOptions} />
+              <div className="w-[300px] h-[300px] mx-auto">
+                <Pie data={breakdownData} options={breakdownOptions} />
+              </div>
               <div className="mt-6 grid grid-cols-2 gap-4 text-center">
                 <div>
                   <p className="text-sm text-muted-foreground">Salário Líquido</p>
@@ -266,7 +268,9 @@ export default function SalaryCharts({
 
           {activeChart === 'detailed' && (
             <div className="w-full max-w-md mx-auto">
-              <Pie data={detailedData} options={breakdownOptions} />
+              <div className="w-[300px] h-[300px] mx-auto">
+                <Pie data={detailedData} options={breakdownOptions} />
+              </div>
               <div className="mt-6 grid grid-cols-1 gap-2">
                 {discounts.map((discount, index) => (
                   <div key={index} className="flex justify-between items-center text-sm">
