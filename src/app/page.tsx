@@ -60,7 +60,7 @@ export default function HomePage() {
               <section className="bg-background p-5 rounded-lg border border-border">
                 <h3 className="text-lg font-semibold mb-3 text-primary flex items-center">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2 text-chart-1"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
-                  Tabela Progressiva do IRRF
+                  Tabela Progressiva do IRRF (atualizada maio/2025)
                 </h3>
                 <p className="text-sm text-muted-foreground mb-3">A alíquota aplicada varia conforme a faixa salarial:</p>
                 <div className="overflow-x-auto">
@@ -74,29 +74,29 @@ export default function HomePage() {
                     </thead>
                     <tbody className="divide-y divide-border">
                       <tr>
-                        <td className="p-2">Até R$ 2.259,20</td>
+                        <td className="p-2">Até R$ 2.428,80</td>
                         <td className="p-2">Isento</td>
                         <td className="p-2">R$ 0,00</td>
                       </tr>
                       <tr>
-                        <td className="p-2">De R$ 2.259,21 até R$ 2.826,65</td>
+                        <td className="p-2">De R$ 2.428,81 até R$ 2.826,65</td>
                         <td className="p-2">7,5%</td>
-                        <td className="p-2">R$ 169,44</td>
+                        <td className="p-2">R$ 182,16</td>
                       </tr>
                       <tr>
                         <td className="p-2">De R$ 2.826,66 até R$ 3.751,05</td>
                         <td className="p-2">15%</td>
-                        <td className="p-2">R$ 381,44</td>
+                        <td className="p-2">R$ 394,16</td>
                       </tr>
                       <tr>
                         <td className="p-2">De R$ 3.751,06 até R$ 4.664,68</td>
                         <td className="p-2">22,5%</td>
-                        <td className="p-2">R$ 662,77</td>
+                        <td className="p-2">R$ 675,49</td>
                       </tr>
                       <tr>
                         <td className="p-2">Acima de R$ 4.664,68</td>
                         <td className="p-2">27,5%</td>
-                        <td className="p-2">R$ 896,00</td>
+                        <td className="p-2">R$ 908,73</td>
                       </tr>
                     </tbody>
                   </table>

@@ -10,6 +10,7 @@ import { AlertCircle, CheckCircle, DollarSign, Percent, Users, MinusCircle, Hist
 import PayrollHistory from './payroll-history';
 import SalaryCharts from './salary-charts';
 import { PayrollHistoryEntry } from '@/types/payroll';
+import { MoneyInput } from './money-input';
 
 // Form schema with validations
 const formSchema = z.object({
@@ -50,7 +51,8 @@ export default function PayrollCalculator() {
     handleSubmit,
     formState: { errors },
     reset,
-    setValue
+    setValue,
+    watch
   } = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -222,21 +224,11 @@ export default function PayrollCalculator() {
                 Salário Bruto <span className="text-destructive">*</span>
               </label>
               <div className="relative">
-                <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground">
-                  R$
-                </span>
-                <input
+                <MoneyInput
                   id="grossPay"
-                  type="number"
-                  step="0.01"
-                  className={cn(
-                    "w-full px-8 py-2 rounded-md border bg-background focus:ring-2 focus:ring-primary focus:outline-none",
-                    errors.grossPay ? "border-destructive" : "border-input"
-                  )}
-                  {...register('grossPay', { 
-                    valueAsNumber: true,
-                    required: 'Salário bruto é obrigatório'
-                  })}
+                  value={watch('grossPay') || 0}
+                  onChange={(value) => setValue('grossPay', value)}
+                  placeholder="R$ 0,00"
                 />
               </div>
               {errors.grossPay && (
