@@ -12,9 +12,16 @@ import SalaryCharts from './salary-charts';
 import { PayrollHistoryEntry } from '@/types/payroll';
 import { MoneyInput } from './money-input';
 
+z.setErrorMap((issue, ctx) => {
+  if (issue.code === "invalid_type" && issue.received === "nan" && issue.expected === "number") {
+    return { message: "Esperado um número, mas recebeu um valor inválido" };
+  }
+  return { message: ctx.defaultError };
+});
+
 // Form schema with validations
 const formSchema = z.object({
-  grossPay: z.number().positive('O salário bruto deve ser positivo'),
+  grossPay: z.number().min(1518, 'O salário bruto deve ser maior ou igual a R$ 1.518,00'),
   numberOfDependents: z.number().int().min(0, 'O número de dependentes não pode ser negativo'),
   fixedAmountDiscount: z.number().min(0, 'O desconto fixo não pode ser negativo'),
   percentangeDiscount: z.number().min(0, 'O percentual não pode ser negativo').max(100, 'O percentual máximo é 100%'),
@@ -56,7 +63,7 @@ export default function PayrollCalculator() {
   } = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      grossPay: undefined,
+      grossPay: 0,
       numberOfDependents: 0,
       fixedAmountDiscount: 0,
       percentangeDiscount: 0,
@@ -226,7 +233,7 @@ export default function PayrollCalculator() {
               <div className="relative">
                 <MoneyInput
                   id="grossPay"
-                  value={watch('grossPay') || 0}
+                  value={watch('grossPay')}
                   onChange={(value) => setValue('grossPay', value)}
                   placeholder="R$ 0,00"
                 />
@@ -273,22 +280,11 @@ export default function PayrollCalculator() {
                   Desconto Fixo <span className="text-destructive">*</span>
                 </label>
                 <div className="relative">
-                  <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground">
-                    R$
-                  </span>
-                  <input
+                  <MoneyInput
                     id="fixedAmountDiscount"
-                    type="number"
-                    min="0"
-                    step="0.01"
-                    className={cn(
-                      "w-full px-8 py-2 rounded-md border bg-background focus:ring-2 focus:ring-primary focus:outline-none",
-                      errors.fixedAmountDiscount ? "border-destructive" : "border-input"
-                    )}
-                    {...register('fixedAmountDiscount', { 
-                      valueAsNumber: true,
-                      required: 'Desconto fixo é obrigatório'
-                    })}
+                    value={watch('fixedAmountDiscount')}
+                    onChange={(value) => setValue('fixedAmountDiscount', value)}
+                    placeholder="R$ 0,00"
                   />
                 </div>
                 {errors.fixedAmountDiscount && (
@@ -308,6 +304,7 @@ export default function PayrollCalculator() {
                   <input
                     id="percentangeDiscount"
                     type="number"
+                    inputMode="decimal"
                     min="0"
                     max="100"
                     step="1"

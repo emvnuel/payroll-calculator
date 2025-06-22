@@ -1,6 +1,6 @@
 "use client";
 
-import { useReducer } from "react";
+import { useReducer, useEffect } from "react";
 import { Input } from "./input";
 
 interface MoneyInputProps {
@@ -20,12 +20,20 @@ const moneyFormatter = Intl.NumberFormat("pt-BR", {
 });
 
 export function MoneyInput({ value, onChange, placeholder, id }: MoneyInputProps) {
-  const initialValue = value ? moneyFormatter.format(value) : "";
+  const moneyFormat = (v: number) => moneyFormatter.format(v);
+
+  // Always format the value prop
+  const formattedValue = value ? moneyFormat(value) : "";
 
   const [inputValue, setInputValue] = useReducer((_: string, next: string) => {
     const digits = next.replace(/\D/g, "");
     return moneyFormatter.format(Number(digits) / 100);
-  }, initialValue);
+  }, formattedValue);
+
+  // Sync inputValue with value prop
+  useEffect(() => {
+    setInputValue(formattedValue);
+  }, [formattedValue]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
@@ -38,6 +46,7 @@ export function MoneyInput({ value, onChange, placeholder, id }: MoneyInputProps
   return (
     <Input
       type="text"
+      inputMode="decimal"
       id={id}
       placeholder={placeholder || "R$ 0,00"}
       value={inputValue}
