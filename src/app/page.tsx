@@ -245,15 +245,15 @@ export default function HomePage() {
                       O valor descontado para o INSS é deduzido do salário bruto antes do cálculo do Imposto de Renda (IRRF), reduzindo a base de cálculo e, consequentemente, o valor do imposto a ser pago.
                     </p>
                     <div className="bg-muted p-3 rounded-md">
-                      <p className="font-medium mb-1 text-sm">Fluxo de cálculo:</p>
-                      <div className="flex items-center text-sm text-muted-foreground">
-                        <div className="px-3 py-1.5 bg-background rounded border border-border">Salário Bruto</div>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mx-2"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-                        <div className="px-3 py-1.5 bg-background rounded border border-border text-chart-1">Desconto INSS</div>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mx-2"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-                        <div className="px-3 py-1.5 bg-background rounded border border-border text-chart-1">Desconto IRRF</div>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mx-2"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-                        <div className="px-3 py-1.5 bg-background rounded border border-border text-chart-2">Salário Líquido</div>
+                      <p className="font-medium mb-2 text-sm">Fluxo de cálculo:</p>
+                      <div className="flex flex-col sm:flex-row items-stretch sm:items-center text-sm text-muted-foreground">
+                        <div className="px-3 py-2 sm:py-1.5 bg-background rounded border border-border text-center">Salário Bruto</div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mx-auto my-1 sm:mx-2 rotate-90 sm:rotate-0"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                        <div className="px-3 py-2 sm:py-1.5 bg-background rounded border border-border text-chart-1 text-center">Desconto INSS</div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mx-auto my-1 sm:mx-2 rotate-90 sm:rotate-0"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                        <div className="px-3 py-2 sm:py-1.5 bg-background rounded border border-border text-chart-1 text-center">Desconto IRRF</div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mx-auto my-1 sm:mx-2 rotate-90 sm:rotate-0"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                        <div className="px-3 py-2 sm:py-1.5 bg-background rounded border border-border text-chart-2 text-center">Salário Líquido</div>
                       </div>
                     </div>
                   </div>
