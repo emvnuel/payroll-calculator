@@ -51,7 +51,7 @@ export default function SalaryCharts({
   totalDiscount,
   discounts,
 }: SalaryChartsProps) {
-  const [activeChart, setActiveChart] = useState<'breakdown' | 'comparison' | 'detailed'>('breakdown');
+  const [activeChart, setActiveChart] = useState<'breakdown' | 'detailed'>('breakdown');
 
   // Format currency
   const formatCurrency = (value: number) => {
@@ -131,62 +131,6 @@ export default function SalaryCharts({
     ],
   };
 
-  // Bar chart data for industry comparison
-  const comparisonData = {
-    labels: Object.keys(industryAverages),
-    datasets: [
-      {
-        label: 'Média do Setor',
-        data: Object.values(industryAverages),
-        backgroundColor: 'rgba(113, 113, 122, 0.6)', // muted-foreground with opacity
-        borderColor: 'rgba(113, 113, 122, 1)',
-        borderWidth: 1,
-      },
-      {
-        label: 'Seu Salário',
-        data: Array(Object.keys(industryAverages).length).fill(grossPay),
-        backgroundColor: 'rgba(42, 145, 135, 0.6)', // chart-2 with opacity
-        borderColor: 'rgba(42, 145, 135, 1)',
-        borderWidth: 1,
-      },
-    ],
-  };
-
-  // Bar chart options
-  const comparisonOptions = {
-    responsive: true,
-    scales: {
-      y: {
-        beginAtZero: true,
-        ticks: {
-          callback: function(value: any) {
-            return formatCurrency(value);
-          }
-        }
-      }
-    },
-    plugins: {
-      legend: {
-        position: 'bottom' as const,
-        labels: {
-          font: {
-            family: "'Geist Sans', sans-serif",
-            size: 12,
-          },
-          color: '#71717A', // muted-foreground
-        },
-      },
-      tooltip: {
-        callbacks: {
-          label: function(context: any) {
-            const value = context.raw;
-            return `${context.dataset.label}: ${formatCurrency(value)}`;
-          }
-        }
-      }
-    },
-  };
-
   return (
     <div className="mt-8 space-y-6">
       <h3 className="text-xl font-bold flex items-center">
@@ -197,13 +141,13 @@ export default function SalaryCharts({
         Visualização do Salário
       </h3>
 
-      <div className="flex space-x-2 mb-4">
+      <div className="flex flex-wrap gap-2 mb-4">
         <button
           onClick={() => setActiveChart('breakdown')}
           className={cn(
-            "px-4 py-2 text-sm rounded-md transition-colors",
-            activeChart === 'breakdown' 
-              ? "bg-primary text-primary-foreground" 
+            "px-3 py-1.5 text-sm rounded-md transition-colors flex-grow",
+            activeChart === 'breakdown'
+              ? "bg-primary text-primary-foreground"
               : "bg-secondary text-muted-foreground hover:text-foreground"
           )}
         >
@@ -212,39 +156,28 @@ export default function SalaryCharts({
         <button
           onClick={() => setActiveChart('detailed')}
           className={cn(
-            "px-4 py-2 text-sm rounded-md transition-colors",
-            activeChart === 'detailed' 
-              ? "bg-primary text-primary-foreground" 
+            "px-3 py-1.5 text-sm rounded-md transition-colors flex-grow",
+            activeChart === 'detailed'
+              ? "bg-primary text-primary-foreground"
               : "bg-secondary text-muted-foreground hover:text-foreground"
           )}
         >
           Descontos Detalhados
         </button>
-        <button
-          onClick={() => setActiveChart('comparison')}
-          className={cn(
-            "px-4 py-2 text-sm rounded-md transition-colors",
-            activeChart === 'comparison' 
-              ? "bg-primary text-primary-foreground" 
-              : "bg-secondary text-muted-foreground hover:text-foreground"
-          )}
-        >
-          Comparação com o Mercado
-        </button>
       </div>
 
-      <div className="bg-card p-6 rounded-lg border border-border">
+      <div className="bg-card p-4 sm:p-6 rounded-lg border border-border">
         <motion.div
           key={activeChart}
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
-          className="h-[450px] flex items-center justify-center"
+          className="w-full h-full flex items-center justify-center"
         >
           {activeChart === 'breakdown' && (
             <div className="w-full max-w-md mx-auto">
-              <div className="w-[300px] h-[300px] mx-auto">
+              <div className="w-full h-auto max-w-[300px] sm:max-w-[350px] mx-auto">
                 <Pie data={breakdownData} options={breakdownOptions} />
               </div>
               <div className="mt-6 grid grid-cols-2 gap-4 text-center">
@@ -268,14 +201,14 @@ export default function SalaryCharts({
 
           {activeChart === 'detailed' && (
             <div className="w-full max-w-md mx-auto">
-              <div className="w-[300px] h-[300px] mx-auto">
+              <div className="w-full h-auto max-w-[300px] sm:max-w-[350px] mx-auto">
                 <Pie data={detailedData} options={breakdownOptions} />
               </div>
               <div className="mt-6 grid grid-cols-1 gap-2">
                 {discounts.map((discount, index) => (
                   <div key={index} className="flex justify-between items-center text-sm">
                     <span className="flex items-center">
-                      <span 
+                      <span
                         className="inline-block w-3 h-3 rounded-full mr-2"
                         style={{ backgroundColor: detailedData.datasets[0].backgroundColor[index] as string }}
                       ></span>
@@ -286,7 +219,7 @@ export default function SalaryCharts({
                 ))}
                 <div className="flex justify-between items-center text-sm pt-2 border-t border-border mt-2">
                   <span className="flex items-center">
-                    <span 
+                    <span
                       className="inline-block w-3 h-3 rounded-full mr-2"
                       style={{ backgroundColor: detailedData.datasets[0].backgroundColor[discounts.length] as string }}
                     ></span>
@@ -294,17 +227,6 @@ export default function SalaryCharts({
                   </span>
                   <span className="font-medium text-chart-2">{formatCurrency(netPay)}</span>
                 </div>
-              </div>
-            </div>
-          )}
-
-          {activeChart === 'comparison' && (
-            <div className="w-full h-full">
-              <Bar data={comparisonData} options={comparisonOptions} />
-              <div className="mt-4 text-center">
-                <p className="text-sm text-muted-foreground">
-                  Seu salário bruto de {formatCurrency(grossPay)} comparado com médias do mercado
-                </p>
               </div>
             </div>
           )}

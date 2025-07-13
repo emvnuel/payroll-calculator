@@ -138,7 +138,7 @@ export default function PayrollHistory({ onSelectEntry }: PayrollHistoryProps) {
           <div className="grid gap-6">
             <div>
               <h4 className="text-sm font-medium text-muted-foreground mb-2">Parâmetros do Cálculo</h4>
-              <div className="grid grid-cols-2 gap-3 text-sm">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
                 <div className="bg-background p-3 rounded-md border border-border">
                   <span className="block text-xs text-muted-foreground mb-1">Salário Bruto</span>
                   <span className="font-medium">{formatCurrency(selectedEntry.formData.grossPay)}</span>
@@ -155,7 +155,7 @@ export default function PayrollHistory({ onSelectEntry }: PayrollHistoryProps) {
                   <span className="block text-xs text-muted-foreground mb-1">Desconto Percentual</span>
                   <span className="font-medium">{selectedEntry.formData.percentangeDiscount}%</span>
                 </div>
-                <div className="bg-background p-3 rounded-md border border-border col-span-2">
+                <div className="bg-background p-3 rounded-md border border-border col-span-1 sm:col-span-2">
                   <span className="block text-xs text-muted-foreground mb-1">Dedução Simplificada</span>
                   <span className="font-medium">
                     {selectedEntry.formData.simplifiedDeduction ? "Sim" : "Não"}
