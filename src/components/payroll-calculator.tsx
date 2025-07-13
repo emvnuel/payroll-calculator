@@ -255,6 +255,7 @@ export default function PayrollCalculator() {
                 <input
                   id="numberOfDependents"
                   type="number"
+                  inputMode="decimal"
                   min="0"
                   className={cn(
                     "w-full px-8 py-2 rounded-md border bg-background focus:ring-2 focus:ring-primary focus:outline-none",
